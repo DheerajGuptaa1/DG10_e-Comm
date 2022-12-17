@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="JSON_fetch.css">
+</head>
+
+<body>
+    <header class="wrap-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h1>MyCart</h1>
+                </div>
+                <div class="col-6 col-t-flex col-p-10">
+                    <button aria-label="Mobile Menu" class="mob"><span></span><span></span><span></span></button>
+                    <div class="collapse flex align-center justify-space-between">
+                    <nav>
+                        <ul class="flex">
+                            <li><a href="Index.html">Bestsellers</a></li>
+                            <li><a href="JsonFashion.html">Fashion</a></li>
+                            <li><a href="JsonElectronics.html">Electronics</a></li>
+                            <li><a href="JsonJewelery.html">Jewellery</a></li>
+                            <li><a href="JsonCustomer.html">Customer Service</a></li>
+                        </ul>
+                    </nav>
+                    </div>
+                </div>
+                <div class="col-4 flex justify-right align-center col-t-flex collapse1">
+                    <form class="P_search" action="">
+                        <label><input aria-label="Search Category" type="search" required tabindex="-1" class="inpt" name="q"></label>
+                        <button class="srch">Search</button>
+                    </form>
+                   <div class="cart">
+                       <button class="btn"><span class="fa fa-cart-plus"></span></button> 
+                   </div> 
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="wrap-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h2 class="red">My Feed</h2>
+                    <ul>
+                        <li>Best Deal</li>
+                        <li>Offer</li>
+                        <li>Ocassion</li>
+                        <li>Price</li>
+                        <li>Colour</li>
+                        <li>Winter</li>
+                        <li>Women</li>
+                        <li>Men</li>
+                        <li>Kids</li>
+                        <li>Jewellary</li>
+                        <li>Brand</li>
+                    </ul>
+                </div>
+                <div class="col-10 col-p-12">
+                    <h2 class="Best">Hello! How can we help you?</h2>
+                    <div class="data"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <script>
+        "use strict;"
+        fetch(`https://fakestoreapi.com/products`)
+        .then(i=>i.json())
+        .then(data=>{
+                          
+            for(let j in data){
+            console.log(data[j])
+           // document.querySelector(".row").innerHTML+=`<div class="col-3">${data[j].id}</td><td>${data[j].title}</td><td>${data[j].price}</td><td>${data[j].category}</td><td> <img src="${data[j].image}"" width="50" height="60"></td><td>${data[j].rating}</td></tr>`;
+             document.querySelector(".row1").innerHTML+=`<div class="col-41"><div class="mr"><img src="${data[j].image}" width="337px" height="295px"></div><div class="gap"><h3>${data[j].title}</h3><p class="blue">${data[j].description}</p><p class="red">&#8377;${data[j].price}</p><p><strong>Rating:${data[j].rating.rate} out of ${data[j].rating.count} reviews.</strong></p></div></div>`;
+
+        }
+                    })
+    </script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+    <script>
+        $(function(){
+            $(".mob").click(function(){
+                $(".collapse").slideToggle();
+                $(this).toggleClass("active");
+            })
+        })
+    </script>
+</body>
+</html>
