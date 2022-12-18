@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DG10 e-Com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="JSON_fetch.css">
+</head>
+
+    <body>
+        <header class="wrap-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <h1>MyCart</h1>
+                    </div>
+                    <div class="col-6 col-t-flex col-p-10">
+                        <button aria-label="Mobile Menu" class="mob"><span></span><span></span><span></span></button>
+                        <div class="collapse flex align-center justify-space-between">
+                            <nav>
+                                <ul class="flex">
+                                    <li><a href="JSON_fetch.html">Bestsellers</a></li>
+                                    <li><a href="JsonFashion.html">Fashion</a></li>
+                                    <li><a href="JsonElectronics.html">Electronics</a></li>
+                                    <li><a href="JsonJewelery.html">Jewellery</a></li>
+                                    <li><a href="JsonCustomer.html">Customer Service</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-4 flex justify-right align-center col-t-flex collapse1">
+                        <div>
+                            <form class="P_search" action=""> 
+                                <label><input aria-label="Search Category" type="search" required tabindex="-1" class="inpt" name="q"></label>
+                                <button class="srch">Search</button>
+                             </form>
+                        </div>
+    
+                       <div class="cart">
+                           <button class="btn"><span class="fa fa-cart-plus"></span></button>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <section class="wrap-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <h2 class="red">My Feed</h2>
+                        <ul>
+                            <li>Best Deal</li>
+                            <li>Offer</li>
+                            <li>Ocassion</li>
+                            <li>Price</li>
+                            <li>Colour</li>
+                            <li>Winter</li>
+                            <li>Women</li>
+                            <li>Men</li>
+                            <li>Kids</li>
+                            <li>Jewellery</li>
+                            <li>Brand</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-10 col-p-12">
+                        <h2 class="Best">Our Bestsellers in Electronics, Clothing & Accessories</h2>
+                        <div class="data"> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <button class="btn top">Go To Top</button>
+        </footer>
+
+    <script>
+        "use strict;"
+        fetch(`https://fakestoreapi.com/products`)
+        .then(i=>i.json())
+        .then(data=>
+        {
+            for(let j in data)
+            {
+                document.querySelector(".data").innerHTML+=
+                `<div class="col-44 col-p-12">
+                    <a href="${data[j].id}">
+                        <div class="img_div">
+                            <img src="${data[j].image}" width="263px"height="300px">
+                        </div>
+                        <div class="gap">
+                            <h3>${data[j].title}</h3>
+                            <p class="blue"> ${data[j].description}
+                                <a href="https://fakestoreapi.com/products"> <span>view more</span></a>
+                            </p>
+                            <p class="red">
+                                <b>&#8377;${data[j].price}</b>
+                            </p>
+                            <p><strong>Rating: ${data[j].rating.rate} out of ${data[j].rating.count} reviews</strong></p>
+                        </div>
+                    </a>
+                </div>`;
+            };
+
+            //product by id
+            document.querySelectorAll(".col-44 a")
+            .forEach(z=>
+            {
+                z.addEventListener("click",function(e)
+                {
+                    e.preventDefault();
+                    let id=this.getAttribute('href');
+                    fetch(`https://fakestoreapi.com/products/${id}`)
+                    .then(i=>i.json())
+                    .then(data=>
+                    {          
+                        for(let j in data)
+                        {
+                            document.querySelector(".data").innerHTML=
+                            `<div class="col-6">
+                                <div class="img_div">
+                                    <img src="${data.image}" width="263px" height="300px">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="single-product">
+                                    <h3>${data.category}</h3>
+                                    <h3>${data.title}</h3>
+                                    <p class="blue">${data.description}</p>
+                                    <p class="red">
+                                        <b>&#8377;${data[j].price}</b>
+                                    </p>
+                                    <p><strong>Rating: ${data[j].rating.rate} out of ${data[j].rating.count} reviews</strong></p>
+                                    <div class="btn">
+                                        <button type="submit">Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        }
+                    })
+                })
+            })
+        });
+
+        /*adding to the cart*/
+        document.querySelector(".btn").addEventListener("click",function()
+        {
+            let x= document.querySelector(".Best");
+            console.log(x)
+            x.style.display="none";   
+            document.querySelector(".data").innerHTML=
+            `<div class="col-6">
+                <h2>Your cart is empty</h2>
+            </div>`;
+        })
+              
+        //search*******************
+        document.querySelector(".P_search").addEventListener("submit",function(e)
+        {
+            e.preventDefault();
+            let s=this.q.value;
+            if(s=='jewelery' || s=='electronics' )
+            {
+                fetch(`https://fakestoreapi.com/products/category/${s}`)
+                .then(i=>i.json())
+                .then(data=>
+                {
+                    for(let j in data)
+                    {
+                        document.querySelector(".data").innerHTML +=
+                        `<div class="col-44">
+                            <div class="img_div">
+                                <img src="${data[j].image}" width="263px" height="300px">
+                            </div>
+                            <div class="gap">
+                                <h3>${data[j].title}</h3>
+                                <p class="blue">${data[j].description}</p>
+                                <p class="red"><b>&#8377;${data[j].price}</b></p>
+                                <p><strong>Rating: ${data[j].rating.rate} out of ${data[j].rating.count} reviews</strong></p>
+                            </div>
+                        </div>`;
+                    //    document.querySelector(".data").innerHTML=
+                    //     `<div class="col-44 col-p-12">
+                    //         <p>${data[j].image}</p>
+                    //     </div>`
+                    }
+                })
+            }
+        });            
+
+
+        // fetch(`https://fakestoreapi.com/products/`)
+        // .then(res => res.json())
+        // .then(json =>
+        // {
+        //         console.table(json)
+        //         json.forEach((j, k) =>
+        //         {
+        //             let div=document.createElement('div');
+        //             div.classList.add("data");
+        //             let img=document.createElement("img");
+        //             img.classList.add("img_div");
+        //             let h3=document.createElement("h3");
+        //             let desc=document.createElement("p");
+        //             desc.classList.add("description");
+        //             let price=document.createElement("p");
+        //             let rating=document.createElement("p");
+                    
+                   
+        //             for(let l in j)
+        //             {
+        //                 if(l=="image")
+        //                 {
+        //                     img.src=`${j.image}`;
+        //                     img.width=200;
+        //                     img.height=200;
+        //                 }
+        //                 else if(l=="title")
+        //                 {
+        //                     h3.innerHTML+=`<h3>${j.title}</h3>`;
+        //                 }
+        //                 else if(l=="description")
+        //                 {   
+        //                     desc.innerHTML+=`<p>${j.description}</p>`;
+        //                 }
+        //                 else if(l=="price")
+        //                 {
+        //                     price.innerHTML+=`<p> <b>&#8377; ${j.price}</b></p>`;
+        //                 }
+        //                 else if(l=="rating")
+        //                 {
+        //                     rating.innerHTML+=`<p> ${j.rating.rate} rating out of ${j.rating.count} Reviews</b></p>`;
+        //                 }
+        //             } 
+        //             div.appendChild(img);
+        //             div.appendChild(h3);
+        //             div.appendChild(desc);
+        //             div.appendChild(price);
+        //             div.appendChild(rating);
+        //             document.querySelector(".data .col-44").appendChild(div);
+        //             //document.querySelector("table tbody").innerHTML += `<tr><td>${k+1}</td><td>${j.title}</td><td>${j.price}</td><td>${j.image}</td><td>${j.rating[k]}</td><td>${j.rating[k]}</td></tr>`;
+        //         });
+        // });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+    <script>
+        $(function(){
+            $(".mob").click(function(){
+                $(".collapse").slideToggle();
+                $(this).toggleClass("active");
+            })
+        })
+
+    /* Scroll to Top*/
+    $(".top").click(function()
+    {
+        $("body,html").animate(
+        {
+            scrollTop:0
+        })
+    });
+
+    $(window).scroll(function()
+    {
+        var y=$(this).scrollTop();
+        var vh=$(window).height();
+
+        if(y>=500){
+            $(".top").fadeIn()
+        }
+        else{
+            $(".top").fadeOut()
+        }       
+    });
+
+
+
+    </script>
+</body>
+</html>
