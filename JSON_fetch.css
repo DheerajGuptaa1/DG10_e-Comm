@@ -129,6 +129,21 @@ p{margin: 2px; color: brown;}
         color: teal;
         margin: 2px; overflow:hidden;}
 
+.wrap-3 footer p{text-align: center; color: #fa7c30; padding: 40px 0 20px;font-size: 14px; line-height: 30px;}
+.top{ position: fixed; right: 5px; bottom: 5px;}
+.btn{width: auto;
+    height: 30px;
+    background: brown;
+    color:  cornsilk;
+    border-radius: 5px;
+    text-align: center;
+    padding: 3px 6px;
+    margin: 5px 5px;
+    display: inline-block;
+    vertical-align: bottom;
+    }
+.btn:hover{ background: #ccc; color: brown; }
+
 @media screen  and (max-width:1220px){       
     h2{ font-size: 62px;}
 }
