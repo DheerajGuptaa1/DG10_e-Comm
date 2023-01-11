@@ -22,7 +22,7 @@
                         <div class="collapse flex align-center justify-space-between">
                             <nav>
                                 <ul class="flex">
-                                    <li><a href="JSON_fetch.html">Bestsellers</a></li>
+                                    <li><a class="active" href="JSON_fetch.html">Bestsellers</a></li>
                                     <li><a href="JsonFashion.html">Fashion</a></li>
                                     <li><a href="JsonElectronics.html">Electronics</a></li>
                                     <li><a href="JsonJewelery.html">Jewellery</a></li>
@@ -69,22 +69,28 @@
                     
                     <div class="col-10 col-p-12">
                         <h2 class="Best">Our Bestsellers in Electronics, Clothing & Accessories</h2>
+                        <img src="./Loader Image/loading.gif" alt="" class="loader1">
+                        <img src="./Loader Image/loading.gif" alt="" class="loader2">
+                        <img src="./Loader Image/loading.gif" alt="" class="loader3">
                         <div class="data"> </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <div class="wrap-3">     
             <footer>
                 <p>&copy;DG10 in 2022</p>
                 <button class="btn top">Go To Top</button>
             </footer>
         </div>
-
+        
 
     <script>
         "use strict;"
+        document.querySelector(".loader1").style.display="inline";
+        document.querySelector(".loader2").style.display="inline";
+        document.querySelector(".loader3").style.display="inline";
         fetch(`https://fakestoreapi.com/products`)
         .then(i=>i.json())
         .then(data=>
@@ -100,7 +106,7 @@
                         <div class="gap">
                             <h3>${data[j].title}</h3>
                             <p class="blue"> ${data[j].description}
-                                <a href="https://fakestoreapi.com/products"> <span>view more</span></a>
+                                <a href="https://fakestoreapi.com/products"></a>
                             </p>
                             <p class="red">
                                 <b>&#8377;${data[j].price}</b>
@@ -139,7 +145,7 @@
                                     <p class="red">
                                         <b>&#8377;${data[j].price}</b>
                                     </p>
-                                    <p><strong>Rating: ${data[j].rating.rate} out of ${data[j].rating.count} reviews</strong></p>
+                                    <p><strong>Rating: ${data.rating.rate} out of ${data.rating.count} reviews</strong></p>
                                     <div class="btn">
                                         <button type="submit">Add to cart</button>
                                     </div>
@@ -149,6 +155,10 @@
                     })
                 })
             })
+
+        document.querySelector(".loader1").style.display="none";
+        document.querySelector(".loader2").style.display="none";
+        document.querySelector(".loader3").style.display="none";
         });
 
         /*adding to the cart*/
@@ -188,46 +198,34 @@
                                 <p><strong>Rating: ${data[j].rating.rate} out of ${data[j].rating.count} reviews</strong></p>
                             </div>
                         </div>`;
-                    //    document.querySelector(".data").innerHTML=
-                    //     `<div class="col-44 col-p-12">
-                    //         <p>${data[j].image}</p>
-                    //     </div>`
+                
                     }
                 })
             }
         });            
     </script>
-        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./top.js"></script>
     <script>
-        $(function(){
-            $(".mob").click(function(){
-                $(".collapse").slideToggle();
-                $(this).toggleClass("active");
-            })
-        })
-
-    /* Scroll to Top*/
-    $(".top").click(function()
-    {
-        $("body,html").animate(
-        {
-            scrollTop:0
-        },1500)
-    });
-
-    $(window).scroll(function()
-    {
-        var y=$(this).scrollTop();
-        var vh=$(window).height();
-
-        if(y>=500){
-            $(".top").fadeIn()
-        }
-        else{
-            $(".top").fadeOut()
-        }       
-    });
-</script>
+    /*active navbar with underline*/
+    // $(function()
+    // {
+    //     $("nav ul li a").click(function(e)
+    //     {
+    //       e.preventDefault();
+    //       var path=$(this).attr('href');
+    //       var top=$(path).offset().top;
+    //       $("nav ul li a").removeClass("active");
+    //       $(this).addClass("active");
+         
+    //       $("html,body")
+    //       .animate(
+    //         {
+    //            scrollTop:top-50
+    //         });
+    //     });
+    // })
+    </script>
 </body>
 </html>
