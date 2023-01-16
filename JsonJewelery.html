@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jewellery</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="JSON_fetch.css">
 </head>
 
@@ -24,7 +24,7 @@
                             <li><a href="Index.html">Bestsellers</a></li>
                             <li><a href="JsonFashion.html">Fashion</a></li>
                             <li><a href="JsonElectronics.html">Electronics</a></li>
-                            <li><a href="JsonJewelery.html">Jewellery</a></li>
+                            <li><a class="active" href="JsonJewelery.html">Jewellery</a></li>
                             <li><a href="JsonCustomer.html">Customer Service</a></li>
                         </ul>
                     </nav>
@@ -73,7 +73,11 @@
     <div class="wrap-3">     
         <footer>
             <p>&copy;DG10 in 2022</p>
-            <button class="btn top">Go To Top</button>
+            <div class="top active">
+                <a href="#Home">
+                    <i class="fa-solid fa-angles-up"></i>
+                </a>
+            </div>
         </footer>
     </div>
     
@@ -122,7 +126,6 @@
                     }
                 })
             }
-
             else if(s=='electronics')
             {
                 fetch(`https://fakestoreapi.com/products/category/electronics`)
@@ -149,11 +152,8 @@
                 })
             }
         });           
-       
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./top.js"></script>
-
 </body>
 </html>
