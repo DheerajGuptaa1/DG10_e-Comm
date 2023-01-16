@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DG10 e-Com</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="JSON_fetch.css">
 </head>
 
@@ -22,7 +22,7 @@
                         <div class="collapse flex align-center justify-space-between">
                             <nav>
                                 <ul class="flex">
-                                    <li><a class="active" href="JSON_fetch.html">Bestsellers</a></li>
+                                    <li><a class="active" href="Index.html">Bestsellers</a></li>
                                     <li><a href="JsonFashion.html">Fashion</a></li>
                                     <li><a href="JsonElectronics.html">Electronics</a></li>
                                     <li><a href="JsonJewelery.html">Jewellery</a></li>
@@ -81,11 +81,13 @@
         <div class="wrap-3">     
             <footer>
                 <p>&copy;DG10 in 2022</p>
-                <button class="btn top">Go To Top</button>
+                <div class="top active">
+                    <a href="#Home">
+                        <i class="fa-solid fa-angles-up"></i>
+                    </a>
+                </div>
             </footer>
         </div>
-        
-
     <script>
         "use strict;"
         document.querySelector(".loader1").style.display="inline";
@@ -197,8 +199,7 @@
                                 <p class="red"><b>&#8377;${data[j].price}</b></p>
                                 <p><strong>Rating: ${data[j].rating.rate} out of ${data[j].rating.count} reviews</strong></p>
                             </div>
-                        </div>`;
-                
+                        </div>`;         
                     }
                 })
             }
@@ -207,25 +208,29 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./top.js"></script>
-    <script>
-    /*active navbar with underline*/
-    // $(function()
-    // {
-    //     $("nav ul li a").click(function(e)
-    //     {
-    //       e.preventDefault();
-    //       var path=$(this).attr('href');
-    //       var top=$(path).offset().top;
-    //       $("nav ul li a").removeClass("active");
-    //       $(this).addClass("active");
+    
+     <script>
+x    /*active navbar with underline*/
+    $(function()
+    {
+        $("nav ul li a").click(function(e)
+        {
+          e.preventDefault();
+
+          var path=$(this).attr('href');
+          var top=$(path).offset().top;
+          $("nav ul li a").removeClass("active");
+          $(this).addClass("active");
+
+          let ind = $(this).parent().index()+1;
          
-    //       $("html,body")
-    //       .animate(
-    //         {
-    //            scrollTop:top-50
-    //         });
-    //     });
-    // })
+        //   $("html,body")
+        //   .animate(
+        //     {
+        //        scrollTop:top-50
+        //     });
+        });
+    })
     </script>
 </body>
 </html>
