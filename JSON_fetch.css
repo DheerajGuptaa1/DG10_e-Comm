@@ -116,10 +116,6 @@ p{margin: 2px; color: brown;}
         color: teal;
         margin: 2px; overflow:hidden;}
 
-.col-44 .gap p.blue:hover{
-    height: 210px;
-}
-
 .wrap-3 footer p{text-align: center; color: #fa7c30; padding: 40px 0 20px;font-size: 14px; line-height: 30px;}
 
 .top{position: relative;
